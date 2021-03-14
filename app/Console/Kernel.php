@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->action(DeleteOldChecksAction::class)->everyHour();
+        $schedule->action(DeleteOldChecksAction::class)->hourly();
     }
 
     /**
