@@ -1,17 +1,12 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 import { App, plugin } from '@inertiajs/inertia-vue';
 import Vue from 'vue';
 import { InertiaProgress } from '@inertiajs/progress';
 
-Vue.use(plugin);
 
+Vue.use(plugin);
+Vue.use(InertiaProgress);
 
 InertiaProgress.init({
     // The delay after which the progress bar will
@@ -27,7 +22,6 @@ InertiaProgress.init({
     // Whether the NProgress spinner will be shown.
     showSpinner: false,
 });
-
 
 const el = document.getElementById('app');
 
