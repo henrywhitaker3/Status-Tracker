@@ -2,6 +2,8 @@
 
 namespace App\Utils;
 
+use App\Actions\ServiceCheckFailedAction;
+use App\Actions\ServiceCheckSucceededAction;
 use App\Models\Service;
 use App\Models\ServiceCheck;
 use Exception;
@@ -30,19 +32,18 @@ class ServiceChecker
                 ]
             );
 
-            $statusCode = $response->getStatusCode();
-            $body = $response->getBody()->getContents();
-            $up = true;
+            return run(
+                ServiceCheckSucceededAction::class,
+                $service,
+                $response->getStatusCode(),
+                $response->getBody()->getContents()
+            );
         } catch (Exception $e) {
-            $statusCode = $e->getCode();
-            $body = $e->getMessage();
-            $up = false;
+            return run(
+                ServiceCheckFailedAction::class,
+                $e->getCode(),
+                $e->getMessage(),
+            );
         }
-
-        return $service->checks()->create([
-            'up' => $up,
-            'response_code' => $statusCode,
-            'response_body' => $body,
-        ]);
     }
 }
