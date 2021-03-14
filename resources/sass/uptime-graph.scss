@@ -1,0 +1,21 @@
+.uptime-graph div {
+    @apply h-8;
+    @apply w-2;
+    @apply px-2;
+    @apply py-6;
+    @apply inline-block;
+    @apply rounded;
+    @apply mr-1;
+
+    &:hover {
+        @apply shadow-sm;
+    }
+}
+
+.uptime-graph-up {
+    @apply bg-green-500;
+}
+
+.uptime-graph-down {
+    @apply bg-red-500;
+}

@@ -57,9 +57,10 @@ class ServicesController extends Controller
     public function show(Service $service)
     {
         return Inertia::render(
-            'Service/Show',
+            'Services/Show',
             [
                 'service' => $service,
+                'checks' => $service->checks()->orderBy('id', 'desc')->simplePaginate(),
             ]
         );
     }

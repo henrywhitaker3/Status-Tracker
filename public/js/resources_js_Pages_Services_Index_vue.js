@@ -65,6 +65,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     service: Object
@@ -346,21 +348,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "service-summary" }, [
-    _c(
-      "span",
-      {
-        staticClass: "status-indicator",
-        class: _vm.service.status
-          ? "status-indicator-up"
-          : "status-indicator-down"
-      },
-      [_c("font-awesome-icon", { attrs: { icon: "circle" } })],
-      1
-    ),
-    _vm._v(" "),
-    _c("span", [_vm._v(_vm._s(_vm.service.name))])
-  ])
+  return _c(
+    "inertia-link",
+    { attrs: { href: "/services/" + _vm.service.id, nostyle: "" } },
+    [
+      _c("div", { staticClass: "service-summary" }, [
+        _c(
+          "span",
+          {
+            staticClass: "status-indicator",
+            class:
+              _vm.service.status === true
+                ? "status-indicator-up"
+                : _vm.service.status === false
+                ? "status-indicator-down"
+                : "status-indicator-none"
+          },
+          [_c("font-awesome-icon", { attrs: { icon: "circle" } })],
+          1
+        ),
+        _vm._v(" "),
+        _c("span", [_vm._v(_vm._s(_vm.service.name))])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

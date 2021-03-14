@@ -20,5 +20,7 @@ class DispatchServiceChecks implements ActionInterface
         foreach ($services as $service) {
             dispatch(new ServiceCheckJob($service));
         }
+
+        return $services->count();
     }
 }

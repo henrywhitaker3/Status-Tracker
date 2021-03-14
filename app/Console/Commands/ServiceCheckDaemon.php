@@ -50,12 +50,14 @@ class ServiceCheckDaemon extends Command
 
         pcntl_async_signals(true);
 
-        pcntl_signal(SIGINT, [$this, 'shutdown']); // Call $this->shutdown() on SIGINT
-        pcntl_signal(SIGTERM, [$this, 'shutdown']); // Call $this->shutdown() on SIGTERM
+        pcntl_signal(SIGINT, [$this, 'shutdown']);
+        pcntl_signal(SIGTERM, [$this, 'shutdown']);
 
         while ($this->run) {
-            $this->output('info', 'Dispatching service check jobs');
-            run(DispatchServiceChecks::class);
+            $count = run(DispatchServiceChecks::class);
+
+            $this->output('info', "Dispatched check job for ${count} services");
+
             sleep($this->interval);
         }
     }
@@ -69,6 +71,7 @@ class ServiceCheckDaemon extends Command
 
     private function shutdown()
     {
+        $this->output('info', 'Shutting down');
         $this->run = false;
     }
 }

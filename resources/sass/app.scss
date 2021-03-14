@@ -22,7 +22,7 @@ h3 {
     @apply bg-indigo-500;
 }
 
-a {
+a:not([nostyle]) {
     &:hover {
         @apply text-gray-300;
     }
@@ -68,3 +68,5 @@ a {
 @import 'table';
 @import 'buttons';
 @import 'inputs';
+@import 'uptime-graph';
+@import 'tooltip';

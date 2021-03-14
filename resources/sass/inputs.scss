@@ -1,6 +1,7 @@
 input:not([type='checkbox']):not([type='submit']) {
     @apply block;
     @apply border;
+    @apply border-gray-300;
     @apply rounded;
     @apply p-2;
     @apply w-full;

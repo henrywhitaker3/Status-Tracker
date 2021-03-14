@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Service;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -34,5 +35,18 @@ class ServiceCheckJob implements ShouldQueue
     public function handle()
     {
         $this->service->check();
+    }
+
+    public function failed()
+    {
+        $this->service->checks()->create([
+            'response_code' => 0,
+            'response_body' => 'The queue failed to check the service',
+            'up' => false,
+        ]);
+
+        $this->service->status = false;
+        $this->service->status_changed_at = Carbon::now();
+        $this->service->save();
     }
 }

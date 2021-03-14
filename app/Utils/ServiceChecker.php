@@ -11,15 +11,24 @@ class ServiceChecker
 {
     private GuzzleClient $http;
 
+    private int $timeout;
+
     public function __construct(GuzzleClient $httpClient)
     {
         $this->http = $httpClient;
+        $this->timeout = config('monitor.timeout');
     }
 
     public function check(Service $service): ServiceCheck
     {
         try {
-            $response = $this->http->get($service->check_url);
+            $response = $this->http->get(
+                $service->check_url,
+                [
+                    'connect_timeout' => $this->timeout,
+                    'timeout' => $this->timeout,
+                ]
+            );
 
             $statusCode = $response->getStatusCode();
             $body = $response->getBody()->getContents();

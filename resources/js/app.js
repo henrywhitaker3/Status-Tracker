@@ -5,12 +5,25 @@ import Vue from 'vue';
 import { InertiaProgress } from '@inertiajs/progress';
 
 require('./icons');
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import VTooltip from 'v-tooltip'
 
 
 Vue.use(plugin);
 Vue.use(InertiaProgress);
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(VTooltip);
+
+Vue.prototype.prettyDiff = function(timestamp) {
+    var date = new Date(timestamp).getTime();
+    var now = new Date().getTime();
+    return window.prettyMilliseconds(
+        (now - date),
+        {
+            secondsDecimalDigits: 0
+        }
+    );
+};
 
 InertiaProgress.init({
     // The delay after which the progress bar will
