@@ -15,7 +15,7 @@ class DispatchServiceChecks implements ActionInterface
      */
     public function run()
     {
-        $services = Service::get();
+        $services = Service::enabled()->get();
 
         foreach ($services as $service) {
             dispatch(new ServiceCheckJob($service));

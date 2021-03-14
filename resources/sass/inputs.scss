@@ -1,0 +1,25 @@
+input:not([type='checkbox']):not([type='submit']) {
+    @apply block;
+    @apply border;
+    @apply rounded;
+    @apply p-2;
+    @apply w-full;
+    @apply text-gray-700;
+}
+
+input[type='checkbox'] {
+    @apply h-6;
+    @apply w-6;
+    @apply rounded;
+    @apply text-indigo-500;
+}
+
+label {
+    @apply text-sm;
+    @apply text-gray-500;
+}
+
+.form-error {
+    @apply text-sm;
+    @apply text-red-600;
+}

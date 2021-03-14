@@ -30,7 +30,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Services/Create');
     }
 
     /**
@@ -41,7 +41,11 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate(Service::createRules());
+
+        $service = Service::create($data);
+
+        return redirect()->to(route('services.show', ['service' => $service->id]));
     }
 
     /**
@@ -50,9 +54,14 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Service $service)
     {
-        //
+        return Inertia::render(
+            'Service/Show',
+            [
+                'service' => $service,
+            ]
+        );
     }
 
     /**

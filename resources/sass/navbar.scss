@@ -1,0 +1,14 @@
+nav {
+    @apply bg-primary;
+    @apply py-5;
+    @apply px-4;
+    @apply shadow-md;
+    @apply text-white;
+    @apply flex;
+    @apply justify-between;
+    @apply items-baseline;
+}
+
+.nav-left {
+    @apply text-xl;
+}

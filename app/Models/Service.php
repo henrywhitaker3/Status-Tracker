@@ -21,6 +21,11 @@ class Service extends Model
         'status' => 'boolean',
     ];
 
+    public function scopeEnabled($query)
+    {
+        return $query->where('enabled', true);
+    }
+
     public function scopeWithTotalChecks($query)
     {
         return $query->addSelect([
@@ -63,5 +68,15 @@ class Service extends Model
     public function checks()
     {
         return $this->hasMany(ServiceCheck::class);
+    }
+
+    public static function createRules()
+    {
+        return [
+            'name' => ['required', 'string'],
+            'access_url' => ['required', 'string'],
+            'check_url' => ['required', 'string'],
+            'enabled' => ['required', 'boolean'],
+        ];
     }
 }

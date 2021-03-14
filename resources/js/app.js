@@ -4,9 +4,13 @@ import { App, plugin } from '@inertiajs/inertia-vue';
 import Vue from 'vue';
 import { InertiaProgress } from '@inertiajs/progress';
 
+require('./icons');
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 
 Vue.use(plugin);
 Vue.use(InertiaProgress);
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 InertiaProgress.init({
     // The delay after which the progress bar will

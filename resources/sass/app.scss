@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-gray-100;
+}
+
+h1 {
+    @apply text-3xl;
+}
+
+h2 {
+    @apply text-2xl;
+}
+
+h3 {
+    @apply text-xl;
+}
+
+.bg-primary {
+    @apply bg-indigo-500;
+}
+
+a {
+    &:hover {
+        @apply text-gray-300;
+    }
+}
+
+.service-summary {
+    @apply bg-white;
+    @apply shadow;
+    @apply rounded;
+    @apply px-8;
+    @apply py-4;
+    @apply cursor-pointer;
+
+    &:hover {
+        @apply shadow-lg;
+    }
+}
+
+.status-indicator {
+    @apply text-sm;
+}
+
+.status-indicator-up {
+    @apply text-green-500;
+}
+
+.status-indicator-down {
+    @apply text-red-500;
+}
+
+.status-indicator-none {
+    @apply text-gray-400;
+}
+
+.card {
+    @apply bg-white;
+    @apply rounded;
+    @apply shadow;
+    @apply p-4;
+}
+
+@import 'navbar';
+@import 'table';
+@import 'buttons';
+@import 'inputs';

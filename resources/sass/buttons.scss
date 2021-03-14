@@ -1,0 +1,15 @@
+.button {
+    @apply rounded;
+    @apply p-2;
+    @apply shadow-sm;
+    @apply cursor-pointer;
+
+    &::hover {
+        @apply shadow-md;
+    }
+}
+
+.button-primary {
+    @apply bg-indigo-500;
+    @apply text-white;
+}
