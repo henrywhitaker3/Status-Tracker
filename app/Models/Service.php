@@ -19,6 +19,7 @@ class Service extends Model
 
     protected $casts = [
         'status' => 'boolean',
+        'enabled' => 'boolean',
     ];
 
     public function scopeEnabled($query)

@@ -18,7 +18,9 @@ class ServicesController extends Controller
         return Inertia::render(
             'Services/Index',
             [
-                'services' => Service::withTotalChecks()->get(),
+                'services' => Service::withTotalChecks()
+                    ->orderByRaw('enabled DESC, id DESC')
+                    ->get(),
             ],
         );
     }

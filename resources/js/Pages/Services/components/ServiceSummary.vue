@@ -3,7 +3,7 @@
         <div class="service-summary">
             <span
                 class="status-indicator"
-                :class="service.status === true ? 'status-indicator-up' : (service.status === false ? 'status-indicator-down' : 'status-indicator-none')"
+                :class="getStatusClass()"
             >
                 <font-awesome-icon icon="circle" />
             </span>
@@ -16,6 +16,19 @@
 export default {
     props: {
         service: Object
+    },
+    methods: {
+        getStatusClass() {
+            if(!this.service.enabled) {
+                return 'status-indicator-none';
+            }
+
+            if(this.service.status) {
+                return 'status-indicator-up';
+            }
+
+            return 'status-indicator-down';
+        }
     }
 }
 </script>

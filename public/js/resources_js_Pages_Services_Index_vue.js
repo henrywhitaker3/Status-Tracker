@@ -70,6 +70,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     service: Object
+  },
+  methods: {
+    getStatusClass: function getStatusClass() {
+      if (!this.service.enabled) {
+        return 'status-indicator-none';
+      }
+
+      if (this.service.status) {
+        return 'status-indicator-up';
+      }
+
+      return 'status-indicator-down';
+    }
   }
 });
 
@@ -355,15 +368,7 @@ var render = function() {
       _c("div", { staticClass: "service-summary" }, [
         _c(
           "span",
-          {
-            staticClass: "status-indicator",
-            class:
-              _vm.service.status === true
-                ? "status-indicator-up"
-                : _vm.service.status === false
-                ? "status-indicator-down"
-                : "status-indicator-none"
-          },
+          { staticClass: "status-indicator", class: _vm.getStatusClass() },
           [_c("font-awesome-icon", { attrs: { icon: "circle" } })],
           1
         ),
