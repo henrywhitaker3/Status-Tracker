@@ -6,27 +6,36 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue').default;
+import { App, plugin } from '@inertiajs/inertia-vue';
+import Vue from 'vue';
+import { InertiaProgress } from '@inertiajs/progress';
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+Vue.use(plugin);
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+InertiaProgress.init({
+    // The delay after which the progress bar will
+    // appear during navigation, in milliseconds.
+    delay: 100,
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+    // The color of the progress bar.
+    color: '#fc0390',
 
-const app = new Vue({
-    el: '#app',
+    // Whether to include the default NProgress styles.
+    includeCSS: true,
+
+    // Whether the NProgress spinner will be shown.
+    showSpinner: false,
 });
+
+
+const el = document.getElementById('app');
+
+new Vue({
+    render: h => h(App, {
+        props: {
+            initialPage: JSON.parse(el.dataset.page),
+            resolveComponent: name => import(`./Pages/${name}`).then(module => module.default),
+        },
+    }),
+}).$mount(el)
