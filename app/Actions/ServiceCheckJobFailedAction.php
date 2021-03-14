@@ -6,7 +6,7 @@ use App\Models\Service;
 use Carbon\Carbon;
 use Henrywhitaker3\LaravelActions\Interfaces\ActionInterface;
 
-class ServiceCheckFailedAction implements ActionInterface
+class ServiceCheckJobFailedAction implements ActionInterface
 {
     /**
      * Run the action.
