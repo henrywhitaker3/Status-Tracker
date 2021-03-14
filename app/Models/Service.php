@@ -71,6 +71,16 @@ class Service extends Model
         return $this->hasMany(ServiceCheck::class);
     }
 
+    /**
+     * Return the checks for this service.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function recentChecks()
+    {
+        return $this->hasMany(ServiceCheck::class)->latest()->limit(16);
+    }
+
     public static function createRules()
     {
         return [

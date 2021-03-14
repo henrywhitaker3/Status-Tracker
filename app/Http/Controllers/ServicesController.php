@@ -19,6 +19,7 @@ class ServicesController extends Controller
             'Services/Index',
             [
                 'services' => Service::withTotalChecks()
+                    ->with('recentChecks')
                     ->orderByRaw('enabled DESC, id DESC')
                     ->get(),
             ],
@@ -62,7 +63,7 @@ class ServicesController extends Controller
             'Services/Show',
             [
                 'service' => $service,
-                'checks' => $service->checks()->latest()->simplePaginate(),
+                'checks' => $service->recentChecks,
             ]
         );
     }

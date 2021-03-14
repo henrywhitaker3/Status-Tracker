@@ -8,7 +8,7 @@
             <div class="card flex flex-col space-y-1">
                 <h1>{{ service.name }}</h1>
                 <h2>{{ service.status ? 'Up' : 'Down' }} for {{ prettyDiff(service.status_changed_at) }}</h2>
-                <UptimeGraph :checks="checks.data" />
+                <UptimeGraph :checks="checks" />
             </div>
             <div class="card">
                 <h2>Checks</h2>
@@ -22,7 +22,7 @@
                     </thead>
                     <tbody>
                         <tr
-                            v-for="check in checks.data"
+                            v-for="check in checks"
                             :key="check.id"
                         >
                             <td>curl</td>
@@ -48,10 +48,7 @@ export default {
     },
     props: {
         service: Object,
-        checks: Object,
-    },
-    mounted() {
-        this.checks.data = this.checks.data.reverse()
+        checks: Array,
     }
 }
 </script>
