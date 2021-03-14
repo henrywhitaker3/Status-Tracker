@@ -31413,6 +31413,10 @@ a:not([nostyle]):hover {
   padding-top: 1rem;
   padding-bottom: 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .service-summary:hover {
@@ -31525,10 +31529,10 @@ label {
 }
 
 .uptime-graph div {
-  height: 2rem;
+  height: 1.5rem;
   width: 0.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   display: inline-block;

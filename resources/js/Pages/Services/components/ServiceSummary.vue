@@ -8,12 +8,19 @@
                 <font-awesome-icon icon="circle" />
             </span>
             <span>{{ service.name }}</span>
+            <span>{{ getStatusMessage() }}</span>
+            <UptimeGraph :checks="service.recent_checks" :inline="true" class="hidden lg:block" />
         </div>
     </inertia-link>
 </template>
 
 <script>
+import UptimeGraph from '../../../components/UptimeGraph';
+
 export default {
+    components: {
+        UptimeGraph,
+    },
     props: {
         service: Object
     },
@@ -28,6 +35,19 @@ export default {
             }
 
             return 'status-indicator-down';
+        },
+        getStatusMessage() {
+            if(!this.service.enabled) {
+                return 'Disabled';
+            }
+
+            if(this.service.status) {
+                var msg = 'Up for ';
+            } else {
+                var msg = 'Down for'
+            }
+
+            return msg + this.prettyDiff(this.service.status_changed_at);
         }
     }
 }

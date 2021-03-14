@@ -1,5 +1,5 @@
 <template>
-    <div class="uptime-graph">
+    <div class="uptime-graph" :class="inline ? 'inline-block' : 'block'">
         <div
             v-for="check in getChecksData()"
             :key="check.id"
@@ -20,6 +20,10 @@ export default {
         reverse: {
             type: Boolean,
             default: true,
+        },
+        inline: {
+            type: Boolean,
+            default: false,
         }
     },
     methods: {
