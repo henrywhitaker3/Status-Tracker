@@ -1,0 +1,9 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=monitor
+    ports:
+      - 3306:3306
