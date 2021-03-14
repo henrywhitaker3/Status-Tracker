@@ -49,6 +49,9 @@ export default {
     props: {
         service: Object,
         checks: Object,
+    },
+    mounted() {
+        this.checks.data = this.checks.data.reverse()
     }
 }
 </script>

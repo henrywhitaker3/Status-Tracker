@@ -1,7 +1,7 @@
 <template>
     <div class="uptime-graph">
         <div
-            v-for="check in checksSorted"
+            v-for="check in checks"
             :key="check.id"
             v-tooltip="{
                 delay: 250,
@@ -17,11 +17,6 @@
 export default {
     props: {
         checks: Array,
-    },
-    data: function() {
-        return {
-            checksSorted: this.checks.reverse(),
-        }
     }
 }
 </script>

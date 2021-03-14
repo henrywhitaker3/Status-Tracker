@@ -62,7 +62,7 @@ class ServicesController extends Controller
             'Services/Show',
             [
                 'service' => $service,
-                'checks' => $service->checks()->orderBy('id', 'desc')->simplePaginate(),
+                'checks' => $service->checks()->latest()->simplePaginate(),
             ]
         );
     }
