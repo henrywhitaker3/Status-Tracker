@@ -20,7 +20,7 @@ class ServicesController extends Controller
             [
                 'services' => Service::withTotalChecks()
                     ->with('recentChecks')
-                    ->orderByRaw('enabled DESC, id DESC')
+                    ->orderByRaw('enabled DESC, status ASC, id ASC')
                     ->get(),
             ],
         );
