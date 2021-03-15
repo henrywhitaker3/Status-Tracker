@@ -20,6 +20,7 @@ import Layout from '../../components/Layout';
 import ServiceSummary from './components/ServiceSummary';
 
 export default {
+    metaInfo: { title: 'Services' },
     components: {
         Layout,
         ServiceSummary,

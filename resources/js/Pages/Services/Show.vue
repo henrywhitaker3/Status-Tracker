@@ -11,7 +11,7 @@
                     <h1>{{ service.name }}</h1>
                     <h2>{{ service.status ? 'Up' : 'Down' }} for {{ prettyDiff(service.status_changed_at) }}</h2>
                 </div>
-                <UptimeGraph :checks="checks" />
+                <UptimeGraph :checks="checks.data" />
             </div>
             <div class="card">
                 <h2>Checks</h2>
@@ -28,6 +28,9 @@ import UptimeGraph from '../../components/UptimeGraph';
 import ChecksTable from './components/ChecksTable';
 
 export default {
+    metaInfo() {
+        return { title: this.service.name }
+    },
     components: {
         Layout,
         UptimeGraph,

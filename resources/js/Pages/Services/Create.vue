@@ -87,6 +87,7 @@
 import Layout from '../../components/Layout';
 
 export default {
+    metaInfo: { title: 'New Service ' },
     components: {
         Layout,
     },

@@ -7,12 +7,14 @@ import { InertiaProgress } from '@inertiajs/progress';
 require('./icons');
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VTooltip from 'v-tooltip'
+import VueMeta from 'vue-meta'
 
 
 Vue.use(plugin);
 Vue.use(InertiaProgress);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VTooltip);
+Vue.use(VueMeta)
 
 Vue.prototype.prettyDiff = function(timestamp, ms = false) {
     if(!ms) {
@@ -46,6 +48,9 @@ InertiaProgress.init({
 const el = document.getElementById('app');
 
 new Vue({
+    metaInfo: {
+        titleTemplate: title => (title ? `${title} - ${process.env.MIX_APP_NAME}` : process.env.MIX_APP_NAME),
+    },
     render: h => h(App, {
         props: {
             initialPage: JSON.parse(el.dataset.page),

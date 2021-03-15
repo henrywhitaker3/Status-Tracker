@@ -34,6 +34,7 @@
         "@inertiajs/progress": "^0.2.4",
         "@tailwindcss/forms": "^0.2.1",
         "pretty-ms": "^7.0.1",
-        "v-tooltip": "^2.1.2"
+        "v-tooltip": "^2.1.2",
+        "vue-meta": "^2.4.0"
     }
 }
