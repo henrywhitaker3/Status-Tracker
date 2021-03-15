@@ -27,6 +27,15 @@ class Service extends Model
         'type' => CheckTypeCast::class,
     ];
 
+    // TODO: Figure out this thing
+    // public function scopeWithUptimePercentage($query)
+    // {
+    //     return $query->addSelect([
+    //         'uptime_percentage' => ServiceCheck::query()
+    //             ->selectRaw('100.0 * CASE COUNT(*)')
+    //     ]);
+    // }
+
     public function scopeEnabled($query, $enabled = true)
     {
         return $query->where('enabled', $enabled);
@@ -86,6 +95,16 @@ class Service extends Model
         return $this->hasMany(ServiceCheck::class)->latest();
     }
 
+    public function slackNotification()
+    {
+        return $this->hasOne(SlackNotificationSetting::class);
+    }
+
+    public function discordNotification()
+    {
+        return $this->hasOne(DiscordNotificationSetting::class);
+    }
+
     public static function createRules()
     {
         return [
@@ -93,6 +112,7 @@ class Service extends Model
             'access_url' => ['required', 'string'],
             'check_url' => ['required', 'string'],
             'enabled' => ['required', 'boolean'],
+            'type' => ['required', 'in:' . implode(',', self::types())]
         ];
     }
 
@@ -107,5 +127,33 @@ class Service extends Model
             1 => 'http',
             2 => 'ping',
         ];
+    }
+
+    /**
+     * Determines whether slack notifications should be sent.
+     *
+     * @return bool
+     */
+    public function shouldSendSlackNotification(): bool
+    {
+        if ($this->slackNotification === null) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Determines whether discord notifications should be sent.
+     *
+     * @return bool
+     */
+    public function shouldSendDiscordNotification(): bool
+    {
+        if ($this->discordNotification === null) {
+            return false;
+        }
+
+        return true;
     }
 }
