@@ -15,7 +15,10 @@ class CreateSlackNotificationSettings extends Migration
     {
         Schema::create('discord_notification_settings', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('service_id')->references('id')->on('services')->unique();
+            $table->foreignId('service_id')
+                ->unique()
+                ->constrained('services')
+                ->onDelete('cascade');
             $table->string('webhook_url');
             $table->boolean('enabled')->default(true);
             $table->timestamps();

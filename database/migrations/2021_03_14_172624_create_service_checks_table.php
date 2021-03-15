@@ -15,7 +15,9 @@ class CreateServiceChecksTable extends Migration
     {
         Schema::create('service_checks', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('service_id')->references('id')->on('service');
+            $table->foreignId('service_id')
+                ->constrained('services')
+                ->onDelete('cascade');
             $table->boolean('up');
             $table->integer('response_code');
             $table->text('response_body');
