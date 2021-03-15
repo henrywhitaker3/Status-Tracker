@@ -5,6 +5,7 @@
                 <th>Type</th>
                 <th>Up</th>
                 <th>Time</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -15,13 +16,21 @@
                 <td>{{ check.type }}</td>
                 <td>{{ check.up ? 'Yes' : 'No' }}</td>
                 <td>{{ prettyDiff(check.created_at) }} ago</td>
+                <td class="text-right w-px">
+                    <CheckModal :check="check" />
+                </td>
             </tr>
         </tbody>
     </table>
 </template>
 
 <script>
+import CheckModal from './CheckModal';
+
 export default {
+    components: {
+        CheckModal
+    },
     props: {
         checks: Object
     }
