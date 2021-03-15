@@ -2,7 +2,7 @@
 <div>
     <Layout>
         <div class="mb-3">
-            <inertia-link nostyle href="/services" class="button button-primary mr-2 mb-2">Back to All Services</inertia-link>
+            <inertia-link nostyle href="/" class="button button-primary mr-2 mb-2">Back to All Services</inertia-link>
             <button @click="destroy" class="button button-danger">Delete</button>
         </div>
         <div class="flex flex-col space-y-4">

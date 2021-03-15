@@ -6,7 +6,7 @@
             </div>
 
             <div class="nav-right">
-                <inertia-link href="/services">Services</inertia-link>
+                <inertia-link href="/">Home</inertia-link>
             </div>
         </nav>
 

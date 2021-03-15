@@ -23,10 +23,9 @@ Route::bind('service_with_recent', function ($id) {
     ])->findOrFail($id);
 });
 
-Route::get('/', [ServicesController::class, 'index']);
+Route::get('/', [ServicesController::class, 'index'])->name('servics.index');
 
 Route::prefix('services')->group(function () {
-    Route::get('/', [ServicesController::class, 'index'])->name('services.index');
     Route::get('/create', [ServicesController::class, 'create'])->name('services.create');
     Route::put('/', [ServicesController::class, 'store'])->name('services.store');
     Route::get('/{service}', [ServicesController::class, 'show'])->name('services.show');
