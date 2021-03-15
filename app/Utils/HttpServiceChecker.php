@@ -4,12 +4,13 @@ namespace App\Utils;
 
 use App\Actions\ServiceCheckFailedAction;
 use App\Actions\ServiceCheckSucceededAction;
+use App\Interfaces\ServiceCheckerInterface;
 use App\Models\Service;
 use App\Models\ServiceCheck;
 use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 
-class HttpServiceChecker
+class HttpServiceChecker implements ServiceCheckerInterface
 {
     private GuzzleClient $http;
 

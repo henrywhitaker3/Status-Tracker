@@ -5,12 +5,13 @@ namespace App\Utils;
 use App\Actions\ServiceCheckFailedAction;
 use App\Actions\ServiceCheckSucceededAction;
 use App\Exceptions\ServiceCheckFailedException;
+use App\Interfaces\ServiceCheckerInterface;
 use App\Models\Service;
 use App\Models\ServiceCheck;
 use App\Utils\Extensions\PingCommandWrapper;
 use Exception;
 
-class PingServiceChecker
+class PingServiceChecker implements ServiceCheckerInterface
 {
     private PingCommandWrapper $pingCommandWrapper;
 
