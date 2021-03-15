@@ -14,4 +14,9 @@ class DiscordNotificationSetting extends Model
     protected $casts = [
         'enabled' => 'boolean',
     ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

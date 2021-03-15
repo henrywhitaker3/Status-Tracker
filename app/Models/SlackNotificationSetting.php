@@ -14,4 +14,14 @@ class SlackNotificationSetting extends Model
     protected $casts = [
         'enabled' => 'boolean',
     ];
+
+    /**
+     * Return the service the check is associated with
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }
