@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::bind('service_with_recent', function ($id) {
-    return Service::with('recentChecks')->findOrFail($id);
+    return Service::with([
+        'recentChecks' => function ($query) {
+            return $query->limit(16);
+        }
+    ])->findOrFail($id);
 });
 
 Route::get('/', function () {

@@ -47,7 +47,7 @@ export default {
                 var msg = 'Down for'
             }
 
-            return msg + this.prettyDiff(this.service.status_changed_at);
+            return msg + ' ' + this.prettyDiff(this.service.status_changed_at);
         }
     }
 }

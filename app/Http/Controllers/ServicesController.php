@@ -19,7 +19,11 @@ class ServicesController extends Controller
             'Services/Index',
             [
                 'services' => Service::withTotalChecks()
-                    ->with('recentChecks')
+                    ->with([
+                        'recentChecks' => function ($query) {
+                            return $query->limit(8);
+                        }
+                    ])
                     ->orderByRaw('enabled DESC, status ASC, id ASC')
                     ->get(),
             ],

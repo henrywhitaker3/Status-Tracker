@@ -6,10 +6,12 @@ use App\Actions\CheckServiceAction;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Staudenmeir\EloquentEagerLimit\HasEagerLimit;
 
 class Service extends Model
 {
     use HasFactory;
+    use HasEagerLimit;
 
     protected $fillable = [
         'name',
@@ -78,7 +80,7 @@ class Service extends Model
      */
     public function recentChecks()
     {
-        return $this->hasMany(ServiceCheck::class)->latest()->limit(16);
+        return $this->hasMany(ServiceCheck::class)->latest();
     }
 
     public static function createRules()
