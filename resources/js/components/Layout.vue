@@ -2,7 +2,7 @@
     <div>
         <nav>
             <div class="nav-left">
-                <inertia-link href="/">Monitor</inertia-link>
+                <inertia-link href="/">{{ $page.props.config.app.name }}</inertia-link>
             </div>
 
             <div class="nav-right">
