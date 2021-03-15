@@ -2,6 +2,7 @@
 
 namespace App\Actions\Notifications;
 
+use Exception;
 use Henrywhitaker3\LaravelActions\Interfaces\ActionInterface;
 use Notification;
 use Illuminate\Notifications\Notification as NotificationClass;
@@ -15,7 +16,11 @@ class SendSlackNotification implements ActionInterface
      */
     public function run(string $webhook = null, NotificationClass $notification = null)
     {
-        Notification::route('slack', $webhook)
-            ->notify($notification);
+        try {
+            Notification::route('slack', $webhook)
+                ->notify($notification);
+        } catch (Exception $e) {
+            //
+        }
     }
 }
