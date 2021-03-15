@@ -6,7 +6,7 @@
             <button @click="destroy" class="button button-danger">Delete</button>
         </div>
         <div class="flex flex-col space-y-4">
-            <div class="card block sm:flex justify-between space-y-1">
+            <div class="card block sm:flex justify-between items-center space-y-1">
                 <div>
                     <h1>{{ service.name }}</h1>
                     <h2>{{ service.status ? 'Up' : 'Down' }} for {{ prettyDiff(service.status_changed_at) }}</h2>
@@ -35,7 +35,7 @@ export default {
     },
     props: {
         service: Object,
-        checks: Array,
+        checks: Object,
     },
     methods: {
         destroy() {

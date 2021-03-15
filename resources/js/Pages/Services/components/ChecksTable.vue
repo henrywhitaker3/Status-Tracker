@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             <tr
-                v-for="check in checks"
+                v-for="check in checks.data"
                 :key="check.id"
             >
                 <td>{{ check.type }}</td>
@@ -23,7 +23,7 @@
 <script>
 export default {
     props: {
-        checks: Array
+        checks: Object
     }
 }
 </script>

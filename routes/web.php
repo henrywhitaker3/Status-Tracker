@@ -29,6 +29,6 @@ Route::prefix('services')->group(function () {
     Route::get('/', [ServicesController::class, 'index'])->name('services.index');
     Route::get('/create', [ServicesController::class, 'create'])->name('services.create');
     Route::put('/', [ServicesController::class, 'store'])->name('services.store');
-    Route::get('/{service_with_recent}', [ServicesController::class, 'show'])->name('services.show');
+    Route::get('/{service}', [ServicesController::class, 'show'])->name('services.show');
     Route::delete('/{service}', [ServicesController::class, 'destroy'])->name('services.destroy');
 });

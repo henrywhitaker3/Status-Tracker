@@ -72,7 +72,7 @@ class ServicesController extends Controller
             'Services/Show',
             [
                 'service' => $service,
-                'checks' => $service->recentChecks,
+                'checks' => $service->checks()->latest()->paginate(),
             ]
         );
     }
