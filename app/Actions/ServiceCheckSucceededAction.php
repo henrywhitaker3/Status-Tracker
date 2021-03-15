@@ -18,12 +18,6 @@ class ServiceCheckSucceededAction implements ActionInterface
         int $statusCode = null,
         string $message = null
     ) {
-        if ($service->status !== true) {
-            $service->status = true;
-            $service->status_changed_at = Carbon::now();
-            $service->save();
-        }
-
         return $service->checks()->create([
             'up' => true,
             'response_code' => $statusCode,

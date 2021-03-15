@@ -55,9 +55,9 @@ class ServicesController extends Controller
     {
         $data = $request->validate(Service::createRules());
 
-        $service = Service::create($data);
+        $service = Service::create($data)->load('recentChecks');
 
-        return redirect()->to(route('services.show', ['service' => $service->id]));
+        return redirect()->to(route('services.show', ['service_with_recent' => $service->id]));
     }
 
     /**
@@ -106,8 +106,8 @@ class ServicesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        //
+        $service->delete();
     }
 }
