@@ -23,9 +23,7 @@ Route::bind('service_with_recent', function ($id) {
     ])->findOrFail($id);
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ServicesController::class, 'index']);
 
 Route::prefix('services')->group(function () {
     Route::get('/', [ServicesController::class, 'index'])->name('services.index');

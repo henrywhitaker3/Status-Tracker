@@ -95,4 +95,17 @@ class Service extends Model
             'enabled' => ['required', 'boolean'],
         ];
     }
+
+    /**
+     * Return array of supported types.
+     *
+     * @return array
+     */
+    public static function types(): array
+    {
+        return [
+            1 => 'http',
+            2 => 'ping',
+        ];
+    }
 }

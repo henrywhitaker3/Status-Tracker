@@ -3,14 +3,17 @@
 namespace App\Casts;
 
 use App\Exceptions\InvalidCheckTypeException;
+use App\Models\Service;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class CheckTypeCast implements CastsAttributes
 {
-    private $types = [
-        1 => 'http',
-        2 => 'ping',
-    ];
+    private array $types;
+
+    public function __construct()
+    {
+        $this->types = Service::types();
+    }
 
     /**
      * Cast the given value.
