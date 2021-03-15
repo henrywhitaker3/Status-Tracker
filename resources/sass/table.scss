@@ -1,0 +1,42 @@
+.table-wrapper {
+    @apply bg-white;
+    @apply rounded-md;
+    @apply shadow;
+    @apply overflow-x-auto;
+}
+
+table {
+    @apply w-full;
+    @apply whitespace-nowrap;
+}
+
+table thead {
+    @apply border-b-2;
+}
+
+thead tr {
+    @apply text-left;
+    @apply font-bold;
+}
+
+thead tr th {
+    @apply px-6;
+    @apply pt-6;
+    @apply pb-4;
+}
+
+tbody tr {
+    &:hover {
+        @apply bg-gray-100;
+    }
+
+    &:focus {
+        @apply bg-gray-100;
+    }
+}
+
+table tr td {
+    @apply px-6;
+    @apply py-4;
+    @apply border-t;
+}

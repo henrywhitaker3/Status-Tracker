@@ -13,10 +13,10 @@
                 </div>
                 <UptimeGraph :checks="checks.data" />
             </div>
-            <div class="card">
-                <h2>Checks</h2>
+            <div class="table-wrapper">
                 <ChecksTable :checks="checks" />
             </div>
+            <Links :links="checks.links" />
         </div>
     </Layout>
 </div>
@@ -26,6 +26,7 @@
 import Layout from '../../components/Layout';
 import UptimeGraph from '../../components/UptimeGraph';
 import ChecksTable from './components/ChecksTable';
+import Links from '../../components/Links';
 
 export default {
     metaInfo() {
@@ -35,6 +36,7 @@ export default {
         Layout,
         UptimeGraph,
         ChecksTable,
+        Links
     },
     props: {
         service: Object,
