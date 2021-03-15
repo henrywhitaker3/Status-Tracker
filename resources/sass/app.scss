@@ -23,6 +23,8 @@ h3 {
 }
 
 a:not([nostyle]) {
+    @apply inline-block;
+
     &:hover {
         @apply text-gray-300;
     }
@@ -39,6 +41,7 @@ a:not([nostyle]) {
     @apply items-center;
     @apply justify-between;
     @apply flex-wrap;
+    @apply min-h-24;
 
     &:hover {
         @apply shadow-lg;

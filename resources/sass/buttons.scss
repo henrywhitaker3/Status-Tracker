@@ -3,6 +3,7 @@
     @apply p-2;
     @apply shadow-sm;
     @apply cursor-pointer;
+    line-height: normal;
 
     &::hover {
         @apply shadow-md;
@@ -11,5 +12,10 @@
 
 .button-primary {
     @apply bg-indigo-500;
+    @apply text-white;
+}
+
+.button-danger {
+    @apply bg-red-500;
     @apply text-white;
 }

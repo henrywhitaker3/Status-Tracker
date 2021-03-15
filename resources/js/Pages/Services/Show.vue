@@ -2,7 +2,8 @@
 <div>
     <Layout>
         <div class="mb-6">
-            <inertia-link href="/services" class="button button-primary">Back to All Services</inertia-link>
+            <inertia-link href="/services" class="button button-primary mr-2 mb-2">Back to All Services</inertia-link>
+            <button @click="destroy" class="button button-danger">Delete</button>
         </div>
         <div class="flex flex-col space-y-4">
             <div class="card flex flex-col space-y-1">
@@ -49,6 +50,11 @@ export default {
     props: {
         service: Object,
         checks: Array,
+    },
+    methods: {
+        destroy() {
+            this.$inertia.delete('/services/' + this.service.id);
+        }
     }
 }
 </script>
