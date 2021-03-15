@@ -46,7 +46,7 @@ class ServiceCheckDaemon extends Command
      */
     public function handle()
     {
-        $this->output('info', 'Starting service check daemon (interval: ' . $this->interval . ' seconds)');
+        $this->output('info', __('dispatcher.start', ['interval' => $this->interval]));
 
         pcntl_async_signals(true);
 
@@ -56,7 +56,7 @@ class ServiceCheckDaemon extends Command
         while ($this->run) {
             $count = run(DispatchServiceChecks::class);
 
-            $this->output('info', "Dispatched check job for ${count} services");
+            $this->output('info', __('dispatcher.dispatched', ['count' => $count]));
 
             sleep($this->interval);
         }
@@ -71,7 +71,7 @@ class ServiceCheckDaemon extends Command
 
     private function shutdown()
     {
-        $this->output('info', 'Shutting down');
+        $this->output('info', __('dispatcher.die'));
         $this->run = false;
     }
 }
