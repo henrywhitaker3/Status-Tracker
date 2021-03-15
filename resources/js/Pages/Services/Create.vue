@@ -15,7 +15,7 @@
                             id="name"
                             name="name"
                             v-model="service.name"
-                            placeholder="Enter a new for your service"
+                            placeholder="Enter a name for your service"
                         >
                         <span class="form-error" v-if="errors.name">{{ errors.name }}</span>
                     </div>
@@ -42,6 +42,24 @@
                             placeholder="Enter the URL to check"
                         >
                         <span class="form-error" v-if="errors.check_url">{{ errors.check_url }}</span>
+                    </div>
+
+                    <div>
+                        <label for="name">Check Type:</label>
+                        <select
+                            id="type"
+                            name="type"
+                            v-model="service.type"
+                        >
+                            <option
+                                v-for="type in types"
+                                :key="type"
+                                :value="type"
+                            >
+                                {{ type }}
+                            </option>
+                        </select>
+                        <span class="form-error" v-if="errors.type">{{ errors.type }}</span>
                     </div>
 
                     <div>
@@ -73,7 +91,8 @@ export default {
         Layout,
     },
     props: {
-        errors: Object
+        errors: Object,
+        types: Object,
     },
     data: function() {
         return {
@@ -82,6 +101,7 @@ export default {
                 access_url: '',
                 check_url: '',
                 enabled: true,
+                type: null,
             }
         }
     },

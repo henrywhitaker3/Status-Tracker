@@ -31494,14 +31494,32 @@ nav {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
-input:not([type=checkbox]):not([type=submit]) {
+input:not([type=checkbox]):not([type=submit]), select {
   display: block;
+}
+
+input:not([type=checkbox]):not([type=submit]), select {
   border-width: 1px;
+}
+
+input:not([type=checkbox]):not([type=submit]), select {
   --tw-border-opacity: 1;
   border-color: rgba(209, 213, 219, var(--tw-border-opacity));
+}
+
+input:not([type=checkbox]):not([type=submit]), select {
   border-radius: 0.25rem;
+}
+
+input:not([type=checkbox]):not([type=submit]), select {
   padding: 0.5rem;
+}
+
+input:not([type=checkbox]):not([type=submit]), select {
   width: 100%;
+}
+
+input:not([type=checkbox]):not([type=submit]), select {
   --tw-text-opacity: 1;
   color: rgba(55, 65, 81, var(--tw-text-opacity));
 }

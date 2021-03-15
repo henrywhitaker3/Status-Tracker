@@ -37,7 +37,12 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Services/Create');
+        return Inertia::render(
+            'Services/Create',
+            [
+                'types' => Service::types(),
+            ]
+        );
     }
 
     /**
