@@ -31,7 +31,7 @@ Vue.prototype.prettyDiff = function(timestamp, ms = false) {
 InertiaProgress.init({
     // The delay after which the progress bar will
     // appear during navigation, in milliseconds.
-    delay: 100,
+    delay: 500,
 
     // The color of the progress bar.
     color: '#fc0390',

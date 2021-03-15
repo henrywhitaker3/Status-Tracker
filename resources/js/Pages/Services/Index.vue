@@ -24,6 +24,29 @@ export default {
         Layout,
         ServiceSummary,
     },
-    props: ['services']
+    data() {
+        return {
+            refresh: null,
+        }
+    },
+    methods: {
+        startRefresh() {
+            let self = this;
+
+            this.refresh = setInterval(() => {
+                self.$inertia.reload({only: ['services']});
+            }, 1000);
+        },
+        cancelRefresh() {
+            clearInterval(this.refresh);
+        },
+    },
+    props: ['services'],
+    mounted() {
+        this.startRefresh();
+    },
+    destroyed() {
+        this.cancelRefresh();
+    }
 }
 </script>
