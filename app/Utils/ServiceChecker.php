@@ -41,6 +41,7 @@ class ServiceChecker
         } catch (Exception $e) {
             return run(
                 ServiceCheckFailedAction::class,
+                $service,
                 $e->getCode(),
                 $e->getMessage(),
             );
