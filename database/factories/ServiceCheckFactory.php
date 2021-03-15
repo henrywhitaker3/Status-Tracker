@@ -29,6 +29,7 @@ class ServiceCheckFactory extends Factory
             'up' => (bool) rand(0, 1),
             'response_code' => $response['code'],
             'response_body' => $response['body'],
+            'type' => array_rand(Service::types()),
         ];
     }
 

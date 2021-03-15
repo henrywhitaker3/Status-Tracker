@@ -30,6 +30,7 @@ class ServiceFactory extends Factory
             'access_url' => $this->faker()->url,
             'status' => (bool) rand(0, 1),
             'enabled' => (bool) rand(0, 1),
+            'type' => array_rand(Service::types()),
         ];
     }
 }
