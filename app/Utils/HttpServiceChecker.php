@@ -9,7 +9,7 @@ use App\Models\ServiceCheck;
 use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 
-class ServiceChecker
+class HttpServiceChecker
 {
     private GuzzleClient $http;
 

@@ -38,6 +38,7 @@ class ServiceCheckFailedAction implements ActionInterface
             'up' => false,
             'response_code' => $statusCode,
             'response_body' => $message,
+            'type' => $service->type,
         ]);;
     }
 }

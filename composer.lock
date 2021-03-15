@@ -4,8 +4,76 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "209fa4b432e33abf4fb7a43089b65d97",
+    "content-hash": "478f65e1a52f16acbecad42309ed94c3",
     "packages": [
+        {
+            "name": "acamposm/ping",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angelcamposm/ping.git",
+                "reference": "3651fb234bc204735d421e3a6c291b19dc4afd37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angelcamposm/ping/zipball/3651fb234bc204735d421e3a6c291b19dc4afd37",
+                "reference": "3651fb234bc204735d421e3a6c291b19dc4afd37",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.3",
+                "phpunit/phpunit": "^9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Acamposm\\Ping\\PingServiceProvider"
+                    ],
+                    "aliases": {
+                        "Ping": "Acamposm\\Ping\\PingFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Acamposm\\Ping\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Angel Campos",
+                    "email": "angel.campos.m@outlook.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Ping uses the ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an ICMP ECHO_RESPONSE from a host or gateway.",
+            "homepage": "https://github.com/angelcamposm/ping",
+            "keywords": [
+                "icmp",
+                "laravel",
+                "php",
+                "ping"
+            ],
+            "support": {
+                "issues": "https://github.com/angelcamposm/ping/issues",
+                "source": "https://github.com/angelcamposm/ping/tree/2.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/acamposm",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2021-02-07T17:03:02+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",

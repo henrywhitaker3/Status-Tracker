@@ -3,22 +3,30 @@
 namespace App\Actions;
 
 use App\Models\Service;
-use App\Utils\ServiceChecker;
+use App\Utils\HttpServiceChecker;
+use App\Utils\PingServiceChecker;
 use Carbon\Carbon;
 use Henrywhitaker3\LaravelActions\Interfaces\ActionInterface as Action;
 
 class CheckServiceAction implements Action
 {
-    private ServiceChecker $checker;
+    private HttpServiceChecker $httpChecker;
+
+    private PingServiceChecker $pingChecker;
+
+    private array $checkerMaps;
 
     /**
      * Create a new action instance.
      *
      * @return void
      */
-    public function __construct(ServiceChecker $checker)
-    {
-        $this->checker = $checker;
+    public function __construct(
+        HttpServiceChecker $httpChecker,
+        PingServiceChecker $pingChecker
+    ) {
+        $this->httpChecker = $httpChecker;
+        $this->pingChecker = $pingChecker;
     }
 
     /**
@@ -28,7 +36,9 @@ class CheckServiceAction implements Action
      */
     public function run(Service $service = null)
     {
-        $check = $this->checker->check($service);
+        $checker = $service->type . 'Checker';
+
+        $check = $this->$checker->check($service);
 
         if ($service->status !== $check->up) {
             $service->status = $check->up;

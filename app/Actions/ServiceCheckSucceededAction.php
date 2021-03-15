@@ -28,6 +28,7 @@ class ServiceCheckSucceededAction implements ActionInterface
             'up' => true,
             'response_code' => $statusCode,
             'response_body' => $message,
+            'type' => $service->type,
         ]);
     }
 }
