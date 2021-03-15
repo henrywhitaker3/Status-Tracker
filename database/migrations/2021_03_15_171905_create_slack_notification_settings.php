@@ -17,6 +17,7 @@ class CreateDiscordNotificationSettings extends Migration
             $table->id();
             $table->bigInteger('service_id')->references('id')->on('services')->unique();
             $table->string('webhook_url');
+            $table->boolean('enabled')->default(true);
             $table->timestamps();
         });
     }

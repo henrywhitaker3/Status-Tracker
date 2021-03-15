@@ -17,6 +17,7 @@
         "inertiajs/inertia-laravel": "^0.4.0",
         "itsgoingd/clockwork": "^5.0",
         "laravel/framework": "^8.12",
+        "laravel/slack-notification-channel": "^2.3",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "staudenmeir/eloquent-eager-limit": "^1.0"
