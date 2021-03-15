@@ -25,7 +25,7 @@
                             v-for="check in checks"
                             :key="check.id"
                         >
-                            <td>curl</td>
+                            <td>{{ check.type }}</td>
                             <td>{{ check.up ? 'Yes' : 'No' }}</td>
                             <td>{{ prettyDiff(check.created_at) }} ago</td>
                         </tr>

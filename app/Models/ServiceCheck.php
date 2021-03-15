@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\CheckTypeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Staudenmeir\EloquentEagerLimit\HasEagerLimit;
@@ -15,11 +16,13 @@ class ServiceCheck extends Model
         'up',
         'response_code',
         'response_body',
+        'type',
     ];
 
     protected $casts = [
         'response_code' => 'integer',
         'up' => 'boolean',
+        'type' => CheckTypeCast::class,
     ];
 
     public function scopeWhereFailed($query)

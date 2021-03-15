@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Actions\CheckServiceAction;
+use App\Casts\CheckTypeCast;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,16 +18,18 @@ class Service extends Model
         'name',
         'check_url',
         'access_url',
+        'type',
     ];
 
     protected $casts = [
         'status' => 'boolean',
         'enabled' => 'boolean',
+        'type' => CheckTypeCast::class,
     ];
 
-    public function scopeEnabled($query)
+    public function scopeEnabled($query, $enabled = true)
     {
-        return $query->where('enabled', true);
+        return $query->where('enabled', $enabled);
     }
 
     public function scopeWithTotalChecks($query)

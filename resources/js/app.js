@@ -14,9 +14,12 @@ Vue.use(InertiaProgress);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VTooltip);
 
-Vue.prototype.prettyDiff = function(timestamp) {
-    var date = new Date(timestamp).getTime();
+Vue.prototype.prettyDiff = function(timestamp, ms = false) {
+    if(!ms) {
+        var date = new Date(timestamp).getTime();
+    }
     var now = new Date().getTime();
+
     return window.prettyMilliseconds(
         (now - date),
         {
