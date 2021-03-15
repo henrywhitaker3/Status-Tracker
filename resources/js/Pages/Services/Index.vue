@@ -35,7 +35,7 @@ export default {
 
             this.refresh = setInterval(() => {
                 self.$inertia.reload({only: ['services']});
-            }, 1000);
+            }, 2500);
         },
         cancelRefresh() {
             clearInterval(this.refresh);
