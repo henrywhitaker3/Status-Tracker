@@ -1,6 +1,6 @@
 <template>
     <inertia-link :href="'/services/' + service.id" nostyle>
-        <div class="service-summary">
+        <div class="service-summary flex md:grid grid-cols-3 lg:grid-cols-4 items-center justify-between">
             <span
                 class="status-indicator"
                 :class="getStatusClass()"
@@ -8,8 +8,8 @@
                 <font-awesome-icon icon="circle" />
             </span>
             <span>{{ service.name }}</span>
-            <span>{{ getStatusMessage() }}</span>
-            <UptimeGraph :checks="service.recent_checks" :inline="true" class="hidden lg:block" />
+            <span class="text-center">{{ getStatusMessage() }}</span>
+            <UptimeGraph :checks="service.recent_checks" :inline="true" class="hidden lg:flex justify-end" />
         </div>
     </inertia-link>
 </template>

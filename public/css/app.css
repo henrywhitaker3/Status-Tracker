@@ -31433,9 +31433,6 @@ a:not([nostyle]):hover {
   padding-top: 1rem;
   padding-bottom: 1rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   min-height: 6rem;
 }

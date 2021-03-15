@@ -37,9 +37,6 @@ a:not([nostyle]) {
     @apply px-8;
     @apply py-4;
     @apply cursor-pointer;
-    @apply flex;
-    @apply items-center;
-    @apply justify-between;
     @apply flex-wrap;
     @apply min-h-24;
 
