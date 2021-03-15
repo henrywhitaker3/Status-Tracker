@@ -3,6 +3,7 @@
     @apply p-2;
     @apply shadow-sm;
     @apply cursor-pointer;
+    @apply inline-block;
     line-height: normal;
 
     &::hover {
