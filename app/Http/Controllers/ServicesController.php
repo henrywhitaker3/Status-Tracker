@@ -57,7 +57,7 @@ class ServicesController extends Controller
 
         $service = Service::create($data)->load('recentChecks');
 
-        return redirect()->to(route('services.show', ['service_with_recent' => $service->id]));
+        return redirect()->to(route('services.show', ['service' => $service->id]));
     }
 
     /**
