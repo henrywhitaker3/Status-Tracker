@@ -7,7 +7,7 @@
         </div>
         <div class="flex flex-col space-y-4">
             <div class="card">
-                <div class="block sm:flex justify-between items-center space-y-1">
+                <div class="block sm:flex justify-between items-center space-y-1 mb-2">
                     <div>
                         <h1>{{ service.name }}</h1>
                         <h2>{{ service.status ? 'Up' : 'Down' }} for {{ prettyDiff(service.status_changed_at) }}</h2>
@@ -54,10 +54,31 @@ export default {
         service: Object,
         checks: Object,
     },
+    data() {
+        return {
+            refresh: null
+        }
+    },
     methods: {
+        startRefresh() {
+            let self = this;
+
+            this.refresh = setInterval(function() {
+                self.$inertia.reload();
+            }, 2500);
+        },
+        cancelRefresh() {
+            clearInterval(this.refresh);
+        },
         destroy() {
             this.$inertia.delete('/services/' + this.service.id);
         }
+    },
+    destroyed() {
+        this.cancelRefresh();
+    },
+    mounted() {
+        this.startRefresh();
     }
 }
 </script>
