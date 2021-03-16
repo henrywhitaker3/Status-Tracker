@@ -3,6 +3,7 @@
 use App\Http\Controllers\ServiceCheckController;
 use App\Http\Controllers\ServicesController;
 use App\Models\Service;
+use App\Models\ServiceCheck;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,10 @@ Route::bind('service_with_recent', function ($id) {
     ])->findOrFail($id);
 });
 
+Route::bind('service_check_with_service', function ($id) {
+    return ServiceCheck::with('service')->findOrFail($id);
+});
+
 Route::get('/', [ServicesController::class, 'index'])->name('servics.index');
 
 Route::prefix('services')->group(function () {
@@ -34,5 +39,5 @@ Route::prefix('services')->group(function () {
 });
 
 Route::prefix('checks')->group(function () {
-    Route::get('/{serviceCheck}', [ServiceCheckController::class, 'show'])->name('checks.show');
+    Route::get('/{service_check_with_service}', [ServiceCheckController::class, 'show'])->name('checks.show');
 });

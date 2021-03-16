@@ -86,6 +86,13 @@ a:not([nostyle]) {
         @apply rounded-l;
     }
 
+    .check-url {
+        @apply bg-gray-200;
+        @apply font-normal;
+        @apply p-2;
+        @apply break-all;
+    }
+
     .response-code {
         @apply p-2;
         @apply rounded-r;

@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="check-badge">
                     <span class="type">{{ check.type }}</span>
+                    <span class="check-url">{{ check.service.check_url }}</span>
                     <span class="response-code" :class="check.up ? 'response-code-success' : 'response-code-fail'">{{ check.response_code }}</span>
                 </div>
             </div>

@@ -6,12 +6,24 @@
             <button @click="destroy" class="button button-danger">Delete</button>
         </div>
         <div class="flex flex-col space-y-4">
-            <div class="card block sm:flex justify-between items-center space-y-1">
-                <div>
-                    <h1>{{ service.name }}</h1>
-                    <h2>{{ service.status ? 'Up' : 'Down' }} for {{ prettyDiff(service.status_changed_at) }}</h2>
+            <div class="card">
+                <div class="block sm:flex justify-between items-center space-y-1">
+                    <div>
+                        <h1>{{ service.name }}</h1>
+                        <h2>{{ service.status ? 'Up' : 'Down' }} for {{ prettyDiff(service.status_changed_at) }}</h2>
+                    </div>
+                    <UptimeGraph :checks="checks.data" />
                 </div>
-                <UptimeGraph :checks="checks.data" />
+                <div class="flex flex-col space-y-2">
+                    <div class="check-badge">
+                        <span class="type">Check URL</span>
+                        <a rel="noreferer" target="_blank" :href="service.check_url" class="check-url rounded-r">{{ service.check_url}}</a>
+                    </div>
+                    <div class="check-badge">
+                        <span class="type">Access URL</span>
+                        <a rel="noreferer" target="_blank" :href="service.access_url" class="check-url rounded-r">{{ service.access_url}}</a>
+                    </div>
+                </div>
             </div>
             <div class="table-wrapper">
                 <ChecksTable :checks="checks" />
