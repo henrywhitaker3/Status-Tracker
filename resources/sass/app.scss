@@ -68,6 +68,37 @@ a:not([nostyle]) {
     @apply p-4;
 }
 
+.check-badge {
+    @apply flex;
+    @apply font-semibold;
+
+    .type {
+        @apply bg-gray-500;
+        @apply text-white;
+        @apply p-2;
+        @apply rounded-l;
+    }
+
+    .response-code {
+        @apply p-2;
+        @apply rounded-r;
+        @apply text-white;
+    }
+
+    .response-code-success {
+        @apply bg-green-400;
+    }
+
+    .response-code-fail {
+        @apply bg-red-500;
+    }
+}
+
+.response-body {
+    @apply max-h-75vh;
+    @apply overflow-auto;
+}
+
 @import 'navbar';
 @import 'table';
 @import 'buttons';

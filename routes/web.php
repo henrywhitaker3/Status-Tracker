@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceCheckController;
 use App\Http\Controllers\ServicesController;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,10 @@ Route::get('/', [ServicesController::class, 'index'])->name('servics.index');
 Route::prefix('services')->group(function () {
     Route::get('/create', [ServicesController::class, 'create'])->name('services.create');
     Route::put('/', [ServicesController::class, 'store'])->name('services.store');
-    Route::get('/{service}', [ServicesController::class, 'show'])->name('services.show');
+    Route::get('/{service}', [ServicesController::class, 'show'])->name('services.show')->middleware('remember');
     Route::delete('/{service}', [ServicesController::class, 'destroy'])->name('services.destroy');
+});
+
+Route::prefix('checks')->group(function () {
+    Route::get('/{serviceCheck}', [ServiceCheckController::class, 'show'])->name('checks.show');
 });

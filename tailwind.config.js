@@ -14,6 +14,9 @@ module.exports = {
                 '3/4': '75%',
                 'full': '100%',
                 '24': '6rem',
+            },
+            maxHeight: {
+                '75vh': '75vh',
             }
         },
     },

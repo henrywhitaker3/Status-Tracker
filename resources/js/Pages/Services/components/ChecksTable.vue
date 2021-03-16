@@ -17,7 +17,7 @@
                 <td>{{ check.up ? 'Yes' : 'No' }}</td>
                 <td>{{ prettyDiff(check.created_at) }} ago</td>
                 <td class="text-right w-px">
-                    <CheckModal :check="check" />
+                    <inertia-link :href="'/checks/' + check.id"><font-awesome-icon icon="ellipsis-v" /></inertia-link>
                 </td>
             </tr>
         </tbody>
@@ -25,12 +25,7 @@
 </template>
 
 <script>
-import CheckModal from './CheckModal';
-
 export default {
-    components: {
-        CheckModal
-    },
     props: {
         checks: Object
     }
