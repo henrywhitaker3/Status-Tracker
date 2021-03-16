@@ -12,3 +12,33 @@ nav {
 .nav-left {
     @apply text-xl;
 }
+
+.nav-right a {
+    @apply ml-3;
+}
+
+.sidenav {
+    @apply h-screen;
+    @apply absolute;
+    @apply top-0;
+    @apply right-0;
+    @apply w-5/6;
+    @apply shadow;
+    @apply py-8;
+    @apply bg-indigo-400;
+
+    a {
+        @apply w-full;
+        @apply p-6;
+    }
+}
+
+.overlay {
+    @apply w-screen;
+    @apply h-screen;
+    @apply bg-gray-700;
+    @apply absolute;
+    @apply top-0;
+    @apply left-0;
+    @apply opacity-70;
+}
