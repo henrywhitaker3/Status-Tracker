@@ -4,6 +4,7 @@ namespace App\Actions\Notifications;
 
 use App\Models\Service;
 use App\Models\ServiceCheck;
+use App\Models\Setting;
 use Henrywhitaker3\LaravelActions\Interfaces\ActionInterface;
 
 class SendServiceChangedNotification implements ActionInterface
@@ -32,7 +33,7 @@ class SendServiceChangedNotification implements ActionInterface
 
         run(
             'App\Actions\Notifications\Send' . $provider . 'Notification',
-            $service->$property->webhook_url,
+            Setting::retrieve($provider . ' webhook', true),
             $notification
         );
     }
