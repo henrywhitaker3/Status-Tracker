@@ -27,6 +27,10 @@ class Service extends Model
         'type' => CheckTypeCast::class,
     ];
 
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
     // TODO: Figure out this thing
     // public function scopeWithUptimePercentage($query)
     // {
