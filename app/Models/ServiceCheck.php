@@ -39,4 +39,14 @@ class ServiceCheck extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    /**
+     * Return the notifications associated with the check
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notifications()
+    {
+        return $this->hasMany(NotificationLog::class);
+    }
 }

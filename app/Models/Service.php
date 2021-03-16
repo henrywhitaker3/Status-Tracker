@@ -95,6 +95,16 @@ class Service extends Model
         return $this->hasMany(ServiceCheck::class)->latest();
     }
 
+    /**
+     * Return the checks for this service.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notifications()
+    {
+        return $this->hasMany(NotificationLog::class)->latest();
+    }
+
     public static function createRules()
     {
         return [
