@@ -4,6 +4,7 @@ namespace Tests\Feature\Actions;
 
 use App\Actions\DeleteOldChecksAction;
 use App\Models\ServiceCheck;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Tests\TestCase;
 
@@ -18,7 +19,7 @@ class DeleteOldChecksActionTest extends TestCase
     public function test_it_deletes_old_service_check()
     {
         $check = ServiceCheck::factory()->create();
-        $check->created_at = Carbon::now()->subDays(config('monitor.retention') + 10);
+        $check->created_at = Carbon::now()->subDays(Setting::retrieve('Data retention', true) + 10);
         $check->save();
 
         $this->assertNotNull(ServiceCheck::find($check->id));
