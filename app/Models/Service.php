@@ -95,16 +95,6 @@ class Service extends Model
         return $this->hasMany(ServiceCheck::class)->latest();
     }
 
-    public function slackNotification()
-    {
-        return $this->hasOne(SlackNotificationSetting::class);
-    }
-
-    public function discordNotification()
-    {
-        return $this->hasOne(DiscordNotificationSetting::class);
-    }
-
     public static function createRules()
     {
         return [
@@ -136,7 +126,7 @@ class Service extends Model
      */
     public function shouldSendSlackNotification(): bool
     {
-        if ($this->slackNotification === null) {
+        if (Setting::retrieve('Slack webhook', true) === "") {
             return false;
         }
 
@@ -150,7 +140,7 @@ class Service extends Model
      */
     public function shouldSendDiscordNotification(): bool
     {
-        if ($this->discordNotification === null) {
+        if (Setting::retrieve('Discord webhook', true) === "") {
             return false;
         }
 

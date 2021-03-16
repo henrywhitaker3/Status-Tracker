@@ -17,7 +17,7 @@ class DispatchServiceChecksActionTest extends TestCase
      *
      * @return void
      */
-    public function test_job_is_dispatched()
+    public function test_it_dispatches_jobs()
     {
         Queue::fake();
 
