@@ -28,7 +28,7 @@ class PingServiceChecker implements ServiceCheckerInterface
         try {
             $this->pingCommandWrapper->setHost($service->check_url);
             $ping = $this->pingCommandWrapper->ping();
-            $body = json_encode($ping, JSON_PRETTY_PRINT);
+            $body = json_encode($ping, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
             if ($ping->host_status !== 'Ok') {
                 throw new ServiceCheckFailedException(
