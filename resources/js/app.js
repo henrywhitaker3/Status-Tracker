@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VTooltip from 'v-tooltip'
 import VueMeta from 'vue-meta'
 import VModal from 'vue-js-modal'
-
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
 Vue.use(plugin);
 Vue.use(InertiaProgress);
@@ -17,6 +18,9 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(VTooltip);
 Vue.use(VueMeta)
 Vue.use(VModal);
+Vue.use(Toast, {
+    timeout: 2500
+});
 
 Vue.prototype.prettyDiff = function(timestamp, ms = false) {
     if(!ms) {

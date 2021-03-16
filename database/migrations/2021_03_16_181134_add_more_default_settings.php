@@ -15,6 +15,13 @@ class AddMoreDefaultSettings extends Migration
             'cast' => 'int',
             'category' => 'general',
         ],
+        [
+            'name' => 'Alert threshold',
+            'info' => 'How many failed checks until a notification is sent.',
+            'value' => 1,
+            'cast' => 'int',
+            'category' => 'notifications',
+        ],
     ];
 
     /**

@@ -16,7 +16,7 @@ module.exports = {
                 '24': '6rem',
             },
             maxHeight: {
-                '75vh': '75vh',
+                '60vh': '60vh',
             }
         },
     },

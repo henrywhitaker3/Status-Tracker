@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use App\Rules\SettingsArrayRule;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,54 +22,11 @@ class SettingsController extends Controller
             'Settings/Index',
             [
                 'settings' => [
-                    'general' => [],
+                    'general' => $settings->where('category', 'general'),
                     'notifications' => $settings->where('category', 'notifications'),
                 ],
             ]
         );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -78,19 +36,17 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'settings' => ['required', new SettingsArrayRule],
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        foreach ($request->get('settings') as $setting) {
+            Setting::where('id', $setting['id'])
+                ->update(['value' => $setting['value']]);
+        }
+
+        return redirect()->back()->with('success', __('messages.settings.updated'));
     }
 }

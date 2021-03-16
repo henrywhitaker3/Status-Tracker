@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ServiceCheckController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\SettingsController;
 use App\Models\Service;
 use App\Models\ServiceCheck;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::bind('service_check_with_service', function ($id) {
     return ServiceCheck::with('service')->findOrFail($id);
 });
 
-Route::get('/', [ServicesController::class, 'index'])->name('servics.index');
+Route::get('/', [ServicesController::class, 'index'])->name('services.index');
 
 Route::prefix('services')->group(function () {
     Route::get('/create', [ServicesController::class, 'create'])->name('services.create');
@@ -40,4 +41,9 @@ Route::prefix('services')->group(function () {
 
 Route::prefix('checks')->group(function () {
     Route::get('/{service_check_with_service}', [ServiceCheckController::class, 'show'])->name('checks.show');
+});
+
+Route::prefix('settings')->group(function () {
+    Route::get('/', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/', [SettingsController::class, 'update'])->name('settings.update');
 });

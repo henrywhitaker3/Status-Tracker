@@ -14091,8 +14091,8 @@ select {
   max-height: 100vh;
 }
 
-.max-h-75vh {
-  max-height: 75vh;
+.max-h-60vh {
+  max-height: 60vh;
 }
 
 .max-w-0 {
@@ -31526,8 +31526,15 @@ a:not([nostyle]):hover {
 }
 
 .response-body {
-  max-height: 75vh;
+  max-height: 60vh;
   overflow: auto;
+}
+
+.setting-info {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
 
 nav {
@@ -45191,8 +45198,8 @@ label {
     max-height: 100vh;
   }
 
-  .sm\:max-h-75vh {
-    max-height: 75vh;
+  .sm\:max-h-60vh {
+    max-height: 60vh;
   }
 
   .sm\:max-w-0 {
@@ -75758,8 +75765,8 @@ label {
     max-height: 100vh;
   }
 
-  .md\:max-h-75vh {
-    max-height: 75vh;
+  .md\:max-h-60vh {
+    max-height: 60vh;
   }
 
   .md\:max-w-0 {
@@ -106325,8 +106332,8 @@ label {
     max-height: 100vh;
   }
 
-  .lg\:max-h-75vh {
-    max-height: 75vh;
+  .lg\:max-h-60vh {
+    max-height: 60vh;
   }
 
   .lg\:max-w-0 {
@@ -136892,8 +136899,8 @@ label {
     max-height: 100vh;
   }
 
-  .xl\:max-h-75vh {
-    max-height: 75vh;
+  .xl\:max-h-60vh {
+    max-height: 60vh;
   }
 
   .xl\:max-w-0 {
@@ -167459,8 +167466,8 @@ label {
     max-height: 100vh;
   }
 
-  .\32xl\:max-h-75vh {
-    max-height: 75vh;
+  .\32xl\:max-h-60vh {
+    max-height: 60vh;
   }
 
   .\32xl\:max-w-0 {

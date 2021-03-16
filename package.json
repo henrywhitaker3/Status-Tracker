@@ -36,6 +36,7 @@
         "pretty-ms": "^7.0.1",
         "v-tooltip": "^2.1.2",
         "vue-js-modal": "^2.0.0-rc.6",
-        "vue-meta": "^2.4.0"
+        "vue-meta": "^2.4.0",
+        "vue-toastification": "^1.7.11"
     }
 }

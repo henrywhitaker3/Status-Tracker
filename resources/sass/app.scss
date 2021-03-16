@@ -109,8 +109,13 @@ a:not([nostyle]) {
 }
 
 .response-body {
-    @apply max-h-75vh;
+    @apply max-h-60vh;
     @apply overflow-auto;
+}
+
+.setting-info {
+    @apply text-sm;
+    @apply text-gray-500;
 }
 
 @import 'navbar';

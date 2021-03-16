@@ -65,6 +65,31 @@ export default {
     methods: {
         toggleSidenav() {
             this.showSidenav = !this.showSidenav;
+        },
+        showToastMessages() {
+            var flash = this.$page.props.flash;
+            console.log(flash);
+
+
+        },
+    },
+    watch: {
+        '$page.props.flash': function(flash, old) {
+            if(flash.info) {
+                this.$toast.info(flash.info);
+            }
+
+            if(flash.success) {
+                this.$toast.success(flash.success);
+            }
+
+            if(flash.warning) {
+                this.$toast.warning(flash.warning);
+            }
+
+            if(flash.error) {
+                this.$toast.error(flash.error);
+            }
         }
     }
 }
