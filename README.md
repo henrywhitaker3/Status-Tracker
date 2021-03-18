@@ -1,62 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Speedtest Tracker
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Docker pulls](https://img.shields.io/docker/pulls/henrywhitaker3/status-tracker?style=flat-square)](https://hub.docker.com/r/henrywhitaker3/status-tracker) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/henrywhitaker3/Status-Tracker/Stable?label=master&logo=github&style=flat-square)](https://github.com/henrywhitaker3/Status-Tracker/actions) [![last_commit](https://img.shields.io/github/last-commit/henrywhitaker3/Status-Tracker?style=flat-square)](https://github.com/henrywhitaker3/Status-Tracker/commits) [![issues](https://img.shields.io/github/issues/henrywhitaker3/Status-Tracker?style=flat-square)](https://github.com/henrywhitaker3/Status-Tracker/issues) [![commit_freq](https://img.shields.io/github/commit-activity/m/henrywhitaker3/Status-Tracker?style=flat-square)](https://github.com/henrywhitaker3/Status-Tracker/commits) ![version](https://img.shields.io/badge/version-v1.0.0-success?style=flat-square) [![license](https://img.shields.io/github/license/henrywhitaker3/Status-Tracker?style=flat-square)](https://github.com/henrywhitaker3/Status-Tracker/blob/master/LICENSE)
 
-## About Laravel
+Track the status of your services and get notified when they go offline. Currently supports running HTTP and ping checks on services, with notifications to Slack and Discord.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Automatically run status checks every X seconds
+- HTTP and ping checks
+- Slack/Discord notifications
+- [healthchecks.io](https://healthchecks.io) integration
+- Organizr integration
 
-## Learning Laravel
+## Installation & Setup
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Using Docker
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+A docker image is available [here](https://hub.docker.com/r/henrywhitaker3/status-tracker), you can create a new conatiner by running:
 
-## Laravel Sponsors
+```bash
+docker create \
+      --name=status \
+      -p 8766:80 \
+      -v /path/to/data:/config \
+      --restart unless-stopped \
+      henrywhitaker3/status-tracker
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Using Docker Compose
 
-### Premium Partners
+```yml
+version: '3.3'
+services:
+    speedtest:
+        container_name: status
+        image: henrywhitaker3/status-tracker
+        ports:
+            - 8766:80
+        volumes:
+            - /path/to/data:/config
+        environment:
+            - TZ=
+            - PGID=
+            - PUID=
+        restart: unless-stopped
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+#### Images
 
-## Contributing
+There are 2 different docker images:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Tag | Description |
+| :----: | --- |
+| latest | This is the stable release of the app |
+| dev | This release has more features, although could have some bugs |
 
-## Code of Conduct
+#### Parameters
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate `<external>:<internal>` respectively. For example, `-p 8080:80` would expose port `80` from inside the container to be accessible from the host's IP on port `8080` outside the container.
 
-## Security Vulnerabilities
+|     Parameter             |   Function    |
+|     :----:                |   --- |
+|     `-p 8765:80`          |   Exposes the webserver on port 8765  |
+|     `-v /config`          |   All the config files reside here.   |
+|     `-e PUID`             |   Optional. Supply a local user ID for volume permissions   |
+|     `-e PGID`             |   Optional. Supply a local group ID for volume permissions  |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    
+### Manual Install
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+It's not suggested to run this as a manual install, but if oyu know how to run a Laravel/PHP app, then you should be fine.
