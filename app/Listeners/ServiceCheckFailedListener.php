@@ -27,7 +27,7 @@ class ServiceCheckFailedListener
     {
         $this->service = $event->service;
         $this->serviceCheck = $event->serviceCheck;
-        $cacheKey = 'failed-check-' . $this->service->id;
+        $cacheKey = $this->service->getFailedJobsCacheKey();
 
         Cache::increment($cacheKey, 1);
 
@@ -37,7 +37,7 @@ class ServiceCheckFailedListener
             $this->service->save();
         }
 
-        if ((int)Cache::get($cacheKey, 0) >= Setting::retrieve('Alert threshold', true)) {
+        if ((int) Cache::get($cacheKey, 0) === (int) Setting::retrieve('Alert threshold', true)) {
             run(ServiceDownNotificationAction::class, $this->service, $this->serviceCheck);
         }
     }

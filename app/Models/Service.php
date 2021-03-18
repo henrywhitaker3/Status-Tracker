@@ -160,4 +160,9 @@ class Service extends Model
 
         return true;
     }
+
+    public function getFailedJobsCacheKey()
+    {
+        return 'failed-check-' . $this->id;
+    }
 }

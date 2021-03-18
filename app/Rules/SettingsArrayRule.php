@@ -17,7 +17,6 @@ class SettingsArrayRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        info($value);
         foreach ($value as $setting) {
             $requirements = ['id'];
 

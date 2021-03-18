@@ -25,7 +25,7 @@ class ServiceFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker()->name(),
+            'name' => $this->faker()->name,
             'check_url' => $this->faker()->url,
             'access_url' => $this->faker()->url,
             'status' => (bool) rand(0, 1),

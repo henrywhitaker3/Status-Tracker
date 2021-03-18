@@ -25,7 +25,7 @@ class ServiceCheckFactory extends Factory
         $response = $this->randomHttpResponse();
 
         return [
-            'service_id' => Service::factory()->create()->id,
+            'service_id' => Service::factory()->create(),
             'up' => (bool) rand(0, 1),
             'response_code' => $response['code'],
             'response_body' => $response['body'],

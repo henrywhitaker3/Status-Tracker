@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Actions\Notifications\ServiceUpNotificationAction;
 use App\Models\Service;
 use App\Models\ServiceCheck;
+use Cache;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -25,6 +26,7 @@ class ServiceCheckSucceededListener
     {
         $this->service = $event->service;
         $this->serviceCheck = $event->serviceCheck;
+        Cache::put($this->service->getFailedJobsCacheKey(), 0);
 
         if ($this->hasStatusChanged()) {
             $this->service->status_changed_at = Carbon::now();

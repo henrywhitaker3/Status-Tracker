@@ -29,7 +29,6 @@ class ServiceCheckSucceededEvent
     {
         $this->service = $service;
         $this->serviceCheck = $serviceCheck;
-        info('in here');
     }
 
     /**
