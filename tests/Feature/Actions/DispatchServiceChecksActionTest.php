@@ -3,6 +3,8 @@
 namespace Tests\Feature\Actions;
 
 use App\Actions\DispatchServiceChecks;
+use App\Jobs\HttpServiceCheckJob;
+use App\Jobs\PingServiceCheckJob;
 use App\Jobs\ServiceCheckJob;
 use App\Models\Service;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -22,12 +24,19 @@ class DispatchServiceChecksActionTest extends TestCase
         Queue::fake();
 
         Service::factory()->create([
-            'enabled' => true
+            'enabled' => true,
+            'type' => 'http'
+        ]);
+        Service::factory()->create([
+            'enabled' => true,
+            'type' => 'ping'
         ]);
 
         $output = run(DispatchServiceChecks::class);
 
-        $this->assertEquals(1, $output);
-        Queue::assertPushed(ServiceCheckJob::class);
+        $this->assertEquals(2, $output);
+
+        Queue::assertPushed(PingServiceCheckJob::class);
+        Queue::assertPushed(HttpServiceCheckJob::class);
     }
 }
