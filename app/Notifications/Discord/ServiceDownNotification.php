@@ -58,7 +58,7 @@ class ServiceDownNotification extends Notification
                         'State' => 'Down',
                         'Type' => $service->type,
                         'Code' => $serviceCheck->response_code,
-                        'Time' => $serviceCheck->created_at
+                        'Time' => $serviceCheck->created_at->format('Y-m-d H:i:s')
                     ]);
             });
     }

@@ -57,7 +57,7 @@ class ServiceUpNotification extends Notification
                     ->fields([
                         'State' => 'Up',
                         'Type' => $service->type,
-                        'Time' => $serviceCheck->created_at
+                        'Time' => $serviceCheck->created_at->format('Y-m-d H:i:s')
                     ]);
             });
     }
