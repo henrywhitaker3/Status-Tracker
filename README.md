@@ -4,6 +4,8 @@
 
 Track the status of your services and get notified when they go offline. Currently supports running HTTP and ping checks on services, with notifications to Slack and Discord.
 
+![2021-03-18_23-20](https://user-images.githubusercontent.com/36062479/111709997-a310be00-8840-11eb-98f5-8555542bd2f7.png)
+
 
 ## Features
 
