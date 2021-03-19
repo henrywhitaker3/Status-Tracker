@@ -41,3 +41,4 @@ mkdir -p /config/log/status
 cp /defaults/crontab /etc/crontabs/root
 
 chown -R abc:abc /config
+chmod u+s /bin/ping
