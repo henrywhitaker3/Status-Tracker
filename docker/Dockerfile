@@ -9,4 +9,5 @@ COPY ./docker/root /
 
 EXPOSE 80 443
 
+VOLUME ["/run"]
 VOLUME ["/config"]
