@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Actions\ServiceCheckJobFailedAction;
 use App\Events\ServiceCheckFailedEvent;
 use App\Events\ServiceCheckSucceededEvent;
 use App\Models\Service;
@@ -16,7 +17,10 @@ use Throwable;
 
 class HttpServiceCheckJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     private Service $service;
 
