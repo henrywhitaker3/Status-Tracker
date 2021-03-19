@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Casts;
+namespace Tests\Feature\Casts;
 
 use App\Exceptions\InvalidCheckTypeException;
 use App\Models\Service;
