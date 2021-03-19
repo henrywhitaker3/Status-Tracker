@@ -48,10 +48,11 @@ class ServiceCheckDaemon extends Command
     {
         $this->output('info', __('dispatcher.start', ['interval' => $this->interval]));
 
-        pcntl_async_signals(true);
+        // TODO: Get this working in docker
+        // pcntl_async_signals(true);
 
-        pcntl_signal(SIGINT, [$this, 'shutdown']);
-        pcntl_signal(SIGTERM, [$this, 'shutdown']);
+        // pcntl_signal(SIGINT, [$this, 'shutdown']);
+        // pcntl_signal(SIGTERM, [$this, 'shutdown']);
 
         while ($this->run) {
             $count = run(DispatchServiceChecks::class);

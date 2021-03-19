@@ -66,6 +66,8 @@ Container images are configured using parameters passed at runtime (such as thos
 |     :----:                |   --- |
 |     `-p 8765:80`          |   Exposes the webserver on port 8765  |
 |     `-v /config`          |   All the config files reside here.   |
+|     `-e CHECK_INTERVAL`   |   Interval in seconds between queued checks. Defaults to 60 seconds |
+|     `-e CHECK_TIMEOUT`    |   Timeout in seconds before a check is marked as failed. Defaults to 10 seconds |
 |     `-e PUID`             |   Optional. Supply a local user ID for volume permissions   |
 |     `-e PGID`             |   Optional. Supply a local group ID for volume permissions  |
 

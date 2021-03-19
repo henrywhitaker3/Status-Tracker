@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+echo Starting monitor
+exec s6-setuidgid abc php /config/www/artisan monitor:run
