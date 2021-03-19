@@ -17,6 +17,11 @@ class SettingsArrayRule implements Rule
      */
     public function passes($attribute, $value)
     {
+        if (!is_array($value)) {
+            $this->message = 'Argument is in an invalid format';
+            return false;
+        }
+
         foreach ($value as $setting) {
             $requirements = ['id'];
 
